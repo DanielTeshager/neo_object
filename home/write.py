@@ -9,6 +9,7 @@ function and the filename supplied by the user at the command line. The file's
 extension determines which of these functions is used.
 
 You'll edit this file in Part 4.
+
 """
 import csv
 import json
@@ -58,7 +59,6 @@ def write_to_json(results, filename):
     :param filename: A Path-like object pointing to where
     the data should be saved.
     """
-
     data = []
     with open(filename, 'w') as jf:
         for result in results:
@@ -72,7 +72,7 @@ def write_to_json(results, filename):
                     'name': result.neo.name
                     if result.neo.name is not None else '',
                     'diameter_km': result.neo.diameter,
-                    'potentially_hazardous': result.neo.hazardous
+                    'potentially_haardous': result.neo.hazardous
                 }
             })
 

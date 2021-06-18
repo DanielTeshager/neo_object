@@ -1,4 +1,4 @@
-"""Provide filters for querying close approaches
+"""Provide filters for querying close approaches\
 and limit the generated results.
 
 The `create_filters` function produces a collection
@@ -49,7 +49,7 @@ class AttributeFilter:
     """
 
     def __init__(self, op, value):
-        """Construct a new `AttributeFilter` from an binary predicate
+        """Construct a new `AttributeFilter` from an binary predicate\
         and a reference value.
 
         The reference value will be supplied as the second (right-hand side)
@@ -67,9 +67,6 @@ class AttributeFilter:
         """Invoke `self(approach)`."""
         return self.op(self.get(approach), self.value)
 
-    def __str__(self):
-        return f'operator => {self.op} value => {self.value}'
-
     @classmethod
     def get(cls, approach):
         """Get an attribute of interest from a close approach.
@@ -84,6 +81,7 @@ class AttributeFilter:
         raise UnsupportedCriterionError
 
     def __repr__(self):
+        """Return class represenation."""
         return f"{self.__class__.__name__}(op=operator.{self.op.__name__}\
             , value={self.value})"
 
@@ -91,50 +89,60 @@ class AttributeFilter:
 
 
 class DesignationFilter(AttributeFilter):
+    """Create designation filter object."""
+
     @classmethod
     def get(cls, approach):
+        """Return designation filter."""
         return approach.neo.designation
 
-# Attribute filter sub-class to filter close approache objects
-# by time attribute
-
-
 class DateFilter(AttributeFilter):
+    """Create date filter object."""
+
     @classmethod
     def get(cls, approach):
-        # Convert datetime to date
+        """Return date filter object."""
         return approach.time.date()
 
-# Attribute filter sub-class to filter close approache objects by distance
-
-
 class DistanceFilter(AttributeFilter):
+    """Create distance filter object."""
+
     @classmethod
     def get(cls, approach):
+        """Return distance filter object."""
         return approach.distance
 
 # Attribute filter sub-class to filter close approache objects by velocity
 
 
 class VelocityFilter(AttributeFilter):
+    """Create velocity filter object."""
+
     @classmethod
     def get(cls, approach):
+        """Return velocity filter object."""
         return approach.velocity
 
 # Attribute filter sub-class to filter neo objects by diameter
 
 
 class DiameterFilter(AttributeFilter):
+    """Create diameter filter object."""
+
     @classmethod
     def get(cls, approach):
+        """Return diameter filter object."""
         return approach.neo.diameter
 
 # Attribute filter sub-class to filter neo objects by designation
 
 
 class HazardousFilter(AttributeFilter):
+    """Create hazardous filter object."""
+
     @classmethod
     def get(cls, approach):
+        """Return hazardous filter object."""
         return approach.neo.hazardous
 
 

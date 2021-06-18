@@ -1,4 +1,4 @@
-"""Represent models for near-Earth objects and
+"""Represent models for near-Earth objects and\
 their close approaches.
 
 The `NearEarthObject` class represents a near-Earth object.
@@ -42,7 +42,6 @@ class NearEarthObject:
         :param info: A dictionary of excess keyword arguments supplied
         to the constructor.
         """
-
         self.designation = info.get('designation', '')
         self.name = info.get('name', None) if info.get('name') else None
         try:
@@ -59,16 +58,14 @@ class NearEarthObject:
 
     def __str__(self):
         """Return `str(self)`."""
-
         return f"A NearEarthObject {self.fullname}\
                  has a diameter of {self.diameter}\
                  and is classified as\
                 {'hazardous' if self.hazardous else 'not hazadous'}"
 
     def __repr__(self):
-        """Return `repr(self)`, a computer-readable string representation
+        """Return `repr(self)`, a computer-readable string representation\
         of this object."""
-
         return (f"NearEarthObject(designation={self.designation!r},\
                   name={self.name!r}, diameter={self.diameter:.3f},\
                   hazardous={self.hazardous!r})")
@@ -91,10 +88,9 @@ class CloseApproach:
     def __init__(self, **info):
         """Create a new `CloseApproach`.
 
-        :param info: A dictionary of excess keyword arguments supplied
+        :param info: A dictionary of excess keyword arguments supplied\
         to the constructor.
         """
-
         self._designation = info.get('designation', '')
         self.time = cd_to_datetime(info.get('time', None))
         self.distance = info.get('distance', 0.0)
@@ -103,7 +99,7 @@ class CloseApproach:
 
     @property
     def time_str(self):
-        """Return a formatted representation of this `CloseApproach`'s
+        """Return a formatted representation of this `CloseApproach`'s\
         approach time.
 
         The value in `self.time` should be a Python `datetime` object. While a
@@ -119,13 +115,12 @@ class CloseApproach:
 
     def __str__(self):
         """Return `str(self)`."""
-
         return f"A CloseApproach on {self.time_str}\
                  by a NEO at distance of {self.distance: .2f}\
                  travelling at the speed of {self.velocity: .2f} km/s"
 
     def __repr__(self):
-        """Return `repr(self)`, a computer-readable string representation
+        """Return `repr(self)`, a computer-readable string representation\
         of this object."""
         return (f"CloseApproach(time={self.time_str!r},\
                 distance={self.distance:.2f}, "
